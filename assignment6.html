@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Java Script Basics</title>
+
+    <link rel="stylesheet" type="text/css" href="tipcalc.css" />
+    <h5>
+      PSA: I get displayed even when I am inbetween the head tag of an html file
+      before the body tag
+    </h5>
+  </head>
+
+  <body>
+    <div id="Output">
+      <h1>Java Script Basic 1</h1>
+    </div>
+    <br />
+    <h2>Assignment 6.... Have some fun with Java Script</h2>
+
+    <button type="button" onclick="doButtonClickStuff()">Click Here</button
+    ><br />
+
+    <table>
+      <tr>
+        <td><label id="Number1lbl" for="Number1lbl">Number 1</label></td>
+        <td>
+          <input type="text" id="Number1txt" placeholder="Number 1" />
+        </td>
+      </tr>
+      <tr>
+        <td><label id="Number2lbl" for="Number2lbl">Number 2</label></td>
+        <td>
+          <input type="text" id="Number2txt" placeholder="Number 2" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label id="Operation1lbl" for="Operation1lbl">Operation 1</label>
+        </td>
+        <td>
+          <input
+            type="text"
+            id="Operation1valuetxt"
+            name="Operation 1"
+            placeholder="Operation 1 value"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label id="Operation2lbl" for="Operation2lbl">Operation 2</label>
+        </td>
+        <td>
+          <input
+            type="text"
+            id="Operation2valuetxt"
+            name="Operation 2"
+            placeholder="Operation 2 value"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label id="Operation3lbl" for="Operation3lbl">Operation 3</label>
+        </td>
+        <td>
+          <input
+            type="text"
+            id="Operation3valuetxt"
+            name="Operation 3"
+            placeholder="Operation 3 value"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label id="Operation4lbl" for="Operation4lbl">Operation 4</label>
+        </td>
+        <td>
+          <input
+            type="text"
+            id="Operation4valuetxt"
+            name="Operation 4"
+            placeholder="Operation 4 value"
+          />
+        </td>
+      </tr>
+    </table>
+
+    <script lang="javascript">
+      /*
+       Write a simple alert as a welcome message here (3 pts)
+      */
+      alert("Welcome to Patrick Edwards Calculator!")
+
+
+
+      function doButtonClickStuff() {
+
+          /*
+          Step1
+          Prompt user...Collect your input values here... Store them in variables. Have two prompts and collect the values entered into two variables. These variables will be string variables because prompt usually collects string as input. Use prompt function and variable assignment to take the inputs and store it into variables. (3pts)
+          */
+
+          var x = prompt("Enter your first number please :)")
+
+          var y = prompt("Enter your second number please :)")
+
+
+          /*
+          Step2
+          What you stored are string inputs. so convert them into integer and store in a different variable. use the parseInt() function to do this step. Research parseInt in Google if you have to.
+          You have to do the above step two times since you collected two variables as input. (3 pts)
+          */
+
+
+          if (x == '' || y == '' || isNaN(parseInt(x)) || isNaN(parseInt(y))) {
+
+              alert("You didn't enter a number!")
+
+              return;
+
+          }
+          else {
+
+          /*
+          Step3
+          Now you have two integer variables. Change the text boxes that correspond to the number1 label and number2 labels to have the values you collected. The statement to change the textbox values looks something very close to the statement below
+          document.getElementById('<id of the element you want to change>').value=<variable>; (3pts)
+          */
+              var intX = parseInt(x)
+              var intY = parseInt(y)
+
+          /*
+          Step 4
+          Do the 4 operations here... Multiply, Add, divide, subtract..
+          Use everything you learnt from the postread on how to work with variables. Store the output of the operations in 4 separate variables (sum, diff, quotient, product)...
+          If you are getting adventurous check if you are trying to divide by zero and if yes then make the value of the variable quotient as N/A... This will require for you to use the if construct in programming. (6pts)
+          */
+
+              var resultAdd = intX + intY
+              var resultSubtract = intX - intY
+              var resultMulti = intX * intY
+              var resultDiv = intX / intY
+
+          /*
+          Step 5 (12 pts)
+          Change the labels to call out the operation. Change the corresponding textbox to call out the result of the operation.
+          For example instead of Operation 1 make the label say "Sum".
+          For the textbox right beside it make the textbox say the value of the variable sum
+          To do these two things you will use the following commands
+
+          	  document.querySelector("#Operation1lbl").innerHTML="Sum : ";
+          	  document.getElementById('Operation1valuetxt').value=sum;
+          */
+
+              document.querySelector("#Operation1lbl").innerHTML = "Addition"
+              document.querySelector("#Operation2lbl").innerHTML = "Subtraction"
+              document.querySelector("#Operation3lbl").innerHTML = "Multiplication"
+              document.querySelector("#Operation4lbl").innerHTML = "Division"
+
+              document.getElementById("Number1txt").value = x
+              document.getElementById("Number2txt").value = y
+
+              document.getElementById("Operation1valuetxt").value = resultAdd
+              document.getElementById("Operation2valuetxt").value = resultSubtract
+              document.getElementById("Operation3valuetxt").value = resultMulti
+
+          /*
+          Step 6 (5 pts bonus credit)
+          	  write the code to check for division by zero and mark that text box as N/A. Google how to do if command in Javascript.
+          */
+
+              if (resultDiv == Infinity) {
+
+                  document.getElementById("Operation4valuetxt").value = "N/A"
+
+              } else {
+                  document.getElementById("Operation4valuetxt").value = resultDiv
+
+              }
+
+          }
+
+      }
+    </script>
+  </body>
+</html>
